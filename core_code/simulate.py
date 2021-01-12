@@ -5,7 +5,7 @@ configuration = {
         "Grid": {},
         "Clock": {},
         "PhysicsModules": {},
-        "Tools": {}
+        "Tools": {},
         "Diagnostics": {}
         }
 
