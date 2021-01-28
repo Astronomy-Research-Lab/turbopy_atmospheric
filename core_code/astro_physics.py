@@ -18,6 +18,7 @@ class Projectile(PhysicsModule):
         self.publish_resource({"Position": self.position})
         self.publish_resource({"Velocity": self.velocity})
         self.publish_resource({"F_drag": self.f_drag})
+        self.publish_resource({"Mass": self.mass})
     
     def update(self):
         self.push(self.position, self.velocity, self.f_drag, self.mass)
