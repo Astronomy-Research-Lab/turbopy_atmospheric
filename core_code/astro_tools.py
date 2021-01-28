@@ -13,7 +13,7 @@ class Leapfrog(ComputeTool):
     def initialize(self):
         self.dt = self._owner.clock.dt
     
-    def push(self, position, velocity, net_force, mass):
+    def push(self, position, velocity, f_drag, mass):
         """Updates velocity and position vectors
         
         f{n+1} = function of x{n} and other stuff
@@ -21,8 +21,8 @@ class Leapfrog(ComputeTool):
         v{n+1} = v{n} + dt * a{n+1}
 
         """
-        "update net force here"
+        f_net = f_drag + "f_grav (make correct later when other stuff is written"
         position = position + self.dt * velocity
-        velocity = velocity + self.dt * net_force / mass
+        velocity = velocity + self.dt * f_net / mass
 
 ComputeTool.register("Leapfrog", Leapfrog)
