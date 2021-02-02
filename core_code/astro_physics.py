@@ -4,10 +4,12 @@ from turbopy import Simulation, PhysicsModule
 class Projectile(PhysicsModule):
     def __init__(self, owner: Simulation, input_data: dict):
         super().__init__(owner, input_data)
-        self.position == np.zeros((1,2))
-        self.velocity == np.zeros((1,2))
-        self.f_drag == np.zeros((1,2))
-        self.mass == input_data.get('mass', 1)
+        self.position = np.zeros((1,2))
+        self.velocity = np.zeros((1,2))
+        self.mass = input_data.get('mass', 1)
+        self.c_d = input_data.get('c_d', 1)
+        self.p_h = None
+        self.area = input_data.get('area', 1)
         self.push = owner.find_tool_by_name(input_data["pusher"]).push
     
     def initialize(self):
@@ -21,4 +23,5 @@ class Projectile(PhysicsModule):
         self.publish_resource({"Mass": self.mass})
     
     def update(self):
-        self.push(self.position, self.velocity, self.f_drag, self.mass)
+        "update p_h here"
+        self.push(self.position, self.velocity, self.mass, self.c_d, self.p_h, self.area)
