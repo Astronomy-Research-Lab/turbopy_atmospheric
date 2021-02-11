@@ -17,10 +17,10 @@ class Projectile(PhysicsModule):
         self.velocity[:] = np.array(self._input_data["v0"])
     
     def exchange_resources(self):
-        self.publish_resource({"Position": self.position})
-        self.publish_resource({"Velocity": self.velocity})
-        self.publish_resource({"F_drag": self.f_drag})
-        self.publish_resource({"Mass": self.mass})
+        self.publish_resource({"Projectile:Position": self.position})
+        self.publish_resource({"Projectile:Velocity": self.velocity})
+        self.publish_resource({"Projectile:F_drag": self.f_drag})
+        self.publish_resource({"Projectile:Mass": self.mass})
     
     def update(self):
         "update p_h here"
