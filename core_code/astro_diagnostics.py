@@ -1,4 +1,4 @@
-from turbopy import Simulation, Diagnostic
+from turbopy import Simulation, Diagnostic, CSVOutputUtility
 
 class ProjectileDiagnostic(Diagnostic):
     def __init__(self, owner: Simulation, input_data: dict):
@@ -9,16 +9,26 @@ class ProjectileDiagnostic(Diagnostic):
         self.csv = None
         
     def inspect_resource(self, resource):
-        pass
+        if "Projectile:" + self.component in resource:
+            self.data = resource["Projectile:" + self.component]
 
     def diagnose(self):
-        pass
+        self.output_function(self.data[0, :])
         
     def initialize(self):
-        pass
+        functions = {"stdout": self.print_diagnose,
+                     "csv": self.csv_diagnose}
+        self.output_function = functions[self._input_data["output_type"]]
+        if self._input_data["output_type"] == "csv":
+            diagnostic_size = (self._owner.clock.num_steps + 1, 3)
+            self.csv = CSVOutputUtility(
+                self._input_data["filename"],
+                diagnostic_size)
         
     def finalize(self):
-        pass
+        self.diagnose()
+        if self._input_data["output_type"] == "csv":
+            self.csv.finalize()
         
     def print_diagnose(self, data):
         print(data)
