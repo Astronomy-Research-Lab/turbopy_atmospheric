@@ -11,6 +11,8 @@ class ProjectileDiagnostic(Diagnostic):
     def inspect_resource(self, resource):
         if "Projectile:" + self.component in resource:
             self.data = resource["Projectile:" + self.component]
+        if "Atmosphere:" + self.compoennt in resource:
+            self.data = resource["Atmospehre:" + self.component]
 
     def diagnose(self):
         self.output_function(self.data[0, :])
