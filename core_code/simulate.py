@@ -11,6 +11,7 @@ configuration = {
     "PhysicsModules": {
         "Projectile": {"mass": 1,
                        "c_d": 0.5,
+                       "p_h": 0,
                        "area": 1,
                        "x0": [0, 3881000, 0],
                        "v0": [100, 0, 0],

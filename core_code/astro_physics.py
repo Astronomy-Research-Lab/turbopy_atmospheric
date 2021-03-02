@@ -15,6 +15,8 @@ class Projectile(PhysicsModule):
     def initialize(self):
         self.position[:] = np.array(self._input_data["x0"])
         self.velocity[:] = np.array(self._input_data["v0"])
+        self.c_d = self._input_data["c_d"]
+        self.p_h = self._input_data["p_h"]
     
     def exchange_resources(self):
         self.publish_resource({"Projectile:position": self.position})
