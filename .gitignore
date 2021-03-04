@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Custom
-output_atmos/
+core_code/output_atmos/
