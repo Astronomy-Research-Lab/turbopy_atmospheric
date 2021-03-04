@@ -34,5 +34,3 @@ class Leapfrog(ComputeTool):
         f_net = f_drag + f_grav
         position = position + self.dt * velocity
         velocity = velocity + self.dt * f_net / mass
-
-ComputeTool.register("Leapfrog", Leapfrog)
