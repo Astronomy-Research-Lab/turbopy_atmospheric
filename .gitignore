@@ -128,10 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-<<<<<<< HEAD
 # Ignore simulation outputs
 output_atmos/
-=======
-# Ignore outputs from the simulation
-core_code/output_atmos/**
->>>>>>> cad2438a2af52fded960f68e043eb09393b94295
