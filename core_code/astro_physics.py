@@ -1,4 +1,5 @@
 import numpy as np
+from pyatmos import coesa76
 from turbopy import Simulation, PhysicsModule
 
 class Projectile(PhysicsModule):
@@ -26,19 +27,15 @@ class Projectile(PhysicsModule):
         self.altitude[:] = list(range(int(self.maximum/self.step)))
         self.altitude[:] = [alt*self.step for alt in self.altitude]
         self.density[:], self.temperature[:], self.pressure[:] = coesa76(self.altitude)
+        
+        self.c_d = self._input_data["c_d"]
+        self.p_h = self._input_data["p_h"]
     
     def exchange_resources(self):
         self.publish_resource({"Projectile:Position": self.position})
         self.publish_resource({"Projectile:Velocity": self.velocity})
         self.publish_resource({"Projectile:F_drag": self.f_drag})
         self.publish_resource({"Projectile:Mass": self.mass})
-        self.c_d = self._input_data["c_d"]
-        self.p_h = self._input_data["p_h"]
-    
-    def exchange_resources(self):
-        self.publish_resource({"Projectile:position": self.position})
-        self.publish_resource({"Projectile:velocity": self.velocity})
-        self.publish_resource({"Projectile:mass": self.mass})
     
     def update(self):
         self.p_h = self.density.get(int((self.position[0, 1]/self.step)))
