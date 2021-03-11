@@ -34,7 +34,7 @@ class Projectile(PhysicsModule):
         self.publish_resource({"Projectile:Position": self.position})
         self.publish_resource({"Projectile:Velocity": self.velocity})
         self.publish_resource({"Projectile:F_drag": self.f_drag})
-        self.publish_resource({"Projectile:Mass": self.mass})
+        self.publish_resource({"Projectile:Mass": self.mass}
     
     def update(self):
         self.p_h = self.density.get(int((self.position[0, 1]/self.step)))
