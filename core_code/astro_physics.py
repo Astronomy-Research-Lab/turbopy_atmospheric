@@ -1,9 +1,6 @@
 import numpy as np
-<<<<<<< HEAD
 import math
-=======
 from pyatmos import coesa76
->>>>>>> upstream/main
 from turbopy import Simulation, PhysicsModule
 
 class Projectile(PhysicsModule):
