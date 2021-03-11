@@ -17,7 +17,7 @@ def test_straight_fall():
     Assumes no atmosphere"
 
     input_data = {"Clock": {"start_time": 0, "end_time": 200, "dt": 10 ** -2},
-                  "type": "Leapfrog",
+                  "Tools": {"Leapfrog": {}},
                   "Grid": {"N":1, "min": 0, "max": 1},
                   "PhysicsModules": {}}
     owner = Simulation(input_data)
