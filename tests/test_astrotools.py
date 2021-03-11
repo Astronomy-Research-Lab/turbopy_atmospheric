@@ -61,7 +61,7 @@ def test_drag_exists():
     drag_test = Leapfrog(owner, input_data)
     mass = 50
     pos_init = np.zeros((2,1))
-    vel.init = np.zeros((2,1))
+    vel_init = np.zeros((2,1))
     pos_init[:] = [[0], [1000]]
     vel_init[:] = [[5000], [0]]
 
