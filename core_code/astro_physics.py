@@ -1,13 +1,19 @@
 import numpy as np
+<<<<<<< HEAD
 import math
+=======
+from pyatmos import coesa76
+>>>>>>> upstream/main
 from turbopy import Simulation, PhysicsModule
 
 class Projectile(PhysicsModule):
     def __init__(self, owner: Simulation, input_data: dict):
         super().__init__(owner, input_data)
+
         self.sound_constant = 20.04687
-        self.position = np.zeros((1,2))
-        self.velocity = np.zeros((1,2))
+        self.position = np.zeros((1,3))
+        self.velocity = np.zeros((1,3))
+
         self.mass = input_data.get('mass', 1)
         self.c_d = input_data.get('c_d', 1)
         self.mach = None
@@ -29,6 +35,9 @@ class Projectile(PhysicsModule):
         self.altitude[:] = list(range(int(self.maximum/self.step)))
         self.altitude[:] = [alt*self.step for alt in self.altitude]
         self.density[:], self.temperature[:], self.pressure[:] = coesa76(self.altitude)
+        
+        self.c_d = self._input_data["c_d"]
+        self.p_h = self._input_data["p_h"]
     
     def exchange_resources(self):
         self.publish_resource({"Projectile:Position": self.position})
