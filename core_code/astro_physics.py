@@ -40,7 +40,9 @@ class Projectile(PhysicsModule):
         self.publish_resource({"Projectile:mass": self.mass})
 
     def update(self):
-        self.p_h = self.density[int(self.position[0, 1] - 6378000)//self.step]
-        self.mach = self.sound_constant * math.sqrt(self.temperature[int(self.position[0, 1] - 6378000)//self.step])
-        self.mach =  math.sqrt((self.velocity[0 , 0] ** 2) + (self.velocity[0, 1] ** 2))/self.mach
+        R = math.sqrt(self.position[0, 0] ** 2 + self.position[0, 1] ** 2)
+        V = math.sqrt((self.velocity[0 , 0] ** 2) + (self.velocity[0, 1] ** 2))
+        self.p_h = self.density[int(R - 6378000)//self.step]
+        self.mach = self.sound_constant * math.sqrt(self.temperature[int(R - 6378000)//self.step])
+        self.mach =  V/self.mach
         self.push(self.position, self.velocity, self.mass, self.c_d, self.p_h, self.area)
