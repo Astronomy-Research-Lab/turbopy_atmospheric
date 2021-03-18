@@ -28,9 +28,8 @@ class Projectile(PhysicsModule):
     def initialize(self):
         self.position[:] = np.array(self._input_data["x0"])
         self.velocity[:] = np.array(self._input_data["v0"])
-
         self.altitude[:] = list(range(int(self.top/self.step)))
-        self.altitude[:] = [alt*self.step for alt in self.altitude]
+        self.altitude[:] = [alt*self.step/1000 for alt in self.altitude]
         self.density[:], self.temperature[:], self.pressure[:] = coesa76(self.altitude)
         self.mach = self.sound_constant * math.sqrt(self.temperature[int((self.position[0, 1] - 6378000)//self.step)])
     
@@ -44,5 +43,5 @@ class Projectile(PhysicsModule):
         V = math.sqrt((self.velocity[0 , 0] ** 2) + (self.velocity[0, 1] ** 2))
         self.p_h = self.density[int(R - 6378000)//self.step]
         self.mach = self.sound_constant * math.sqrt(self.temperature[int(R - 6378000)//self.step])
-        self.mach =  V/self.mach
+        self.mach = V/self.mach
         self.push(self.position, self.velocity, self.mass, self.c_d, self.p_h, self.area)
