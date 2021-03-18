@@ -44,5 +44,5 @@ class Projectile(PhysicsModule):
         V = math.sqrt((self.velocity[0, 0] ** 2) + (self.velocity[0, 1] ** 2))
         self.p_h = self.density[int(R - 6378000)//self.step]
         self.mach = self.sound_constant * math.sqrt(self.temperature[int(R - 6378000)//self.step])
-        self.mach = V/self.mach
+        self.mach = V / self.mach
         self.push(self.position, self.velocity, self.mass, self.c_d, self.p_h, self.area)
