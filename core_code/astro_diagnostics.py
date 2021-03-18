@@ -13,7 +13,8 @@ class ProjectileDiagnostic(Diagnostic):
             self.data = resource["Projectile:" + self.component]
 
     def diagnose(self):
-        self.output_function(self.data[0, :])
+        if self.data:
+            self.output_function(self.data[0, :])
         
     def initialize(self):
         functions = {"stdout": self.print_diagnose,
