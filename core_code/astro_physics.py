@@ -24,7 +24,6 @@ class Projectile(PhysicsModule):
         self.density = coesa76(self.altitude)[0]
         self.temperature = coesa76(self.altitude)[1]
         self.pressure = coesa76(self.altitude)[2]
-        print(self.position[0, 1])
     
     def initialize(self):
         self.position[:] = np.array(self._input_data["x0"])
@@ -36,9 +35,9 @@ class Projectile(PhysicsModule):
         self.mach = self.sound_constant * math.sqrt(self.temperature[int((self.position[0, 1] - 6378000)//self.step)])
     
     def exchange_resources(self):
-        self.publish_resource({"Projectile:Position": self.position})
-        self.publish_resource({"Projectile:Velocity": self.velocity})
-        self.publish_resource({"Projectile:Mass": self.mass})
+        self.publish_resource({"Projectile:position": self.position})
+        self.publish_resource({"Projectile:velocity": self.velocity})
+        self.publish_resource({"Projectile:mass": self.mass})
 
     def update(self):
         self.p_h = self.density[int(self.position[0, 1] - 6378000)//self.step]

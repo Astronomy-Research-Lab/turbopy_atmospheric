@@ -13,7 +13,7 @@ class ProjectileDiagnostic(Diagnostic):
             self.data = resource["Projectile:" + self.component]
 
     def diagnose(self):
-        if self.data:
+        if not self.data is None:
             self.output_function(self.data[0, :])
         
     def initialize(self):
