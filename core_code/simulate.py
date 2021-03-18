@@ -13,7 +13,7 @@ configuration = {
                        "c_d": 0.5,
                        "p_h": 0,
                        "area": 1,
-                       "x0": [0, 3881000, 0],
+                       "x0": [0, 6477999, 0],
                        "v0": [100, 0, 0],
                        "pusher": "Leapfrog"}},
     "Tools": {"Leapfrog": {}},

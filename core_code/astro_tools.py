@@ -30,7 +30,7 @@ class Leapfrog(ComputeTool):
         R = math.sqrt(position[0, 0] ** 2 + position[0, 1] ** 2)
         V = math.sqrt(velocity[0, 0] ** 2 + velocity[0, 1] ** 2)
         f_drag = (-1/2) * c_d * p_h * V * area * velocity
-        f_grav = G * M_e * position / (R ** 3)
+        f_grav = -1 * G * M_e * position / (R ** 3)
         f_net = f_drag + f_grav
-        position = position + self.dt * velocity
-        velocity = velocity + self.dt * f_net / mass
+        position[:] = position + self.dt * velocity
+        velocity[:] = velocity + self.dt * f_net / mass
