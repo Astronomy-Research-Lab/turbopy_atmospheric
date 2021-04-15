@@ -24,7 +24,8 @@ configuration = {
                         {'component': 'position', 'filename': 'proj_x.csv'},
                         {'component': 'velocity', 'filename': 'proj_v.csv'}
                         ]
-                    }
+                    },
+    "Grid": {"N": 2, "x_min": 0, "x_max":1}
     }
 
 PhysicsModule.register("Projectile", Projectile)
