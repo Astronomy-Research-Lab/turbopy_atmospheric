@@ -14,7 +14,7 @@ def run():
     vel = float(ent_vel.get())
     rad = float(ent_ang.get()) * math.pi / 180
     
-    v0 = [vel * math.cos(rad) * 180 / math.pi, -1 * vel * math.sin(rad) * 180 / math.pi, 0]
+    v0 = [vel * math.cos(rad), -1 * vel * math.sin(rad), 0]
     
     configuration = {
     "Clock": {"start_time": 0,
