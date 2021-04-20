@@ -7,7 +7,7 @@ import tkinter as tk
 import math
 
 def run():
-    """Default values: mass = 1, c_d = 0.5, area = 1, vel = [0, 0, 0], ang = 90"""
+    """Reference values: mass = 1000, c_d = 0.5, area = 1, vel = 0, ang = 0"""
     mass = float(ent_mass.get())
     c_d = float(ent_coef.get())
     area = float(ent_area.get())
