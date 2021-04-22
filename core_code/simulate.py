@@ -11,14 +11,15 @@ def run():
     mass = float(ent_mass.get())
     c_d = float(ent_coef.get())
     area = float(ent_area.get())
-    vel = float(ent_vel.get())
+    vel = float(ent_vel.get()) * 1000
     rad = float(ent_ang.get()) * math.pi / 180
+    dur = float(ent_dur.get())
     
     v0 = [vel * math.cos(rad), -1 * vel * math.sin(rad), 0]
     
     configuration = {
     "Clock": {"start_time": 0,
-              "end_time": 10,
+              "end_time": dur,
               "dt": 0.1},
     "PhysicsModules": {
         "Projectile": {"mass": mass,
@@ -52,7 +53,7 @@ window = tk.Tk()
 window.title("Initial conditions")
 frm = tk.Frame(master = window)
 
-lbl_vel = tk.Label(master = frm, text = "Entry velocity (m/s):")
+lbl_vel = tk.Label(master = frm, text = "Entry velocity (km/s):")
 ent_vel = tk.Entry(master = frm, width = 20)
 lbl_ang = tk.Label(master = frm, text = "Entry angle (\N{DEGREE SIGN}):")
 ent_ang = tk.Entry(master = frm, width = 20)
@@ -62,6 +63,8 @@ lbl_area = tk.Label(master = frm, text = "Front area (m^2):")
 ent_area = tk.Entry(master = frm, width = 20)
 lbl_mass = tk.Label(master = frm, text = "Mass (kg):")
 ent_mass = tk.Entry(master = frm, width = 20)
+lbl_dur = tk.Label(master = frm, text = "Duration (s):")
+ent_dur = tk.Entry(master = frm, width = 20)
 btn_run = tk.Button(master = window, text = "Run", command = run)
 
 frm.pack()
@@ -75,6 +78,8 @@ lbl_area.grid(row = 3, column = 0, padx = 5, sticky = 'w')
 ent_area.grid(row = 3, column = 1, padx = 5)
 lbl_mass.grid(row = 4, column = 0, padx = 5, sticky = 'w')
 ent_mass.grid(row = 4, column = 1, padx = 5)
+lbl_dur.grid(row = 5, column = 0, padx = 5, sticky = 'w')
+ent_dur.grid(row = 5, column = 1, padx = 5)
 btn_run.pack()
 
 window.mainloop()
