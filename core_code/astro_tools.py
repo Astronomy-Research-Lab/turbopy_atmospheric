@@ -32,5 +32,11 @@ class Leapfrog(ComputeTool):
         f_drag = (-1/2) * c_d * p_h * V * area * velocity
         f_grav = -1 * G * M_e * position / (R ** 3)
         f_net = f_drag + f_grav
+        if R <= 6378000:
+            velocity = np.array([0, 0, 0])
+            position = np.array([6378000*position[0, 0]/R,
+                                 6378000*position[0, 1]/R,
+                                 0])
+            f_net = 0
         position[:] = position + self.dt * velocity
         velocity[:] = velocity + self.dt * f_net / mass
